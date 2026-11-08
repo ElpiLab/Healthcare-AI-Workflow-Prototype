@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RxFlow — Rezeptanfragen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Hauptnavigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">R<span>x</span></div>
+        <div>
+          <strong>RxFlow</strong>
+          <small>smart prescription flow</small>
+        </div>
+      </div>
+
+      <div class="workspace-label">Arbeitsbereich</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="Übersicht"><span class="nav-icon">⌂</span>Übersicht</button>
+        <button class="nav-item" data-view="Rezeptanfragen"><span class="nav-icon">▤</span>Rezeptanfragen <b class="nav-count">12</b></button>
+        <button class="nav-item" data-view="Patient:innen"><span class="nav-icon">♧</span>Patient:innen</button>
+        <button class="nav-item" data-view="Integrationen"><span class="nav-icon">↗</span>Integrationen</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="support-card">
+          <div class="support-dot"></div>
+          <div><strong>Systemstatus</strong><span>Alle Systeme aktiv</span></div>
+        </div>
+        <button class="nav-item"><span class="nav-icon">⚙</span>Einstellungen</button>
+        <div class="user-profile">
+          <div class="avatar">SK</div>
+          <div><strong>Sarah Kühne</strong><span>Praxismanagerin</span></div>
+          <span class="more">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>RxFlow</span><i>/</i><strong id="page-title">Übersicht</strong></div>
+        <div class="top-actions">
+          <button class="icon-button" aria-label="Benachrichtigungen"><span class="notification-dot"></span>♧</button>
+          <div class="date-pill"><span class="calendar-icon">▣</span> Dienstag, 4. November 2026</div>
+        </div>
+      </header>
+
+      <section class="content-wrap" id="dashboard-view">
+        <div class="intro-row">
+          <div>
+            <p class="eyebrow">Guten Morgen, Sarah</p>
+            <h1>Ihre Rezeptübersicht</h1>
+            <p class="subline">Alles im Blick. Weniger Rückfragen. Mehr Zeit für Ihre Patient:innen.</p>
+          </div>
+          <button class="primary-button" id="new-request-btn"><span>+</span> Neue Anfrage</button>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card accent-blue">
+            <div class="metric-top"><span>Offene Anfragen</span><span class="metric-icon blue">◷</span></div>
+            <div class="metric-value">12</div><div class="metric-note"><span class="trend up">↑ 18%</span> seit letzter Woche</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span>Heute bearbeitet</span><span class="metric-icon green">✓</span></div>
+            <div class="metric-value">28</div><div class="metric-note"><span class="trend up">↑ 7%</span> seit letzter Woche</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span>Durchschn. Bearbeitung</span><span class="metric-icon beige">↗</span></div>
+            <div class="metric-value">4,2 <small>min</small></div><div class="metric-note"><span class="trend down">↓ 12%</span> effizienter als zuvor</div>
+          </article>
+          <article class="metric-card highlight">
+            <div class="metric-top"><span>Zufriedenheit</span><span class="metric-icon yellow">♡</span></div>
+            <div class="metric-value">96<small>%</small></div><div class="metric-note">Basierend auf 84 Antworten</div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="panel requests-panel">
+            <div class="panel-heading"><div><h2>Aktuelle Rezeptanfragen</h2><p>Die zuletzt eingegangenen Anfragen</p></div><button class="text-button" id="view-all">Alle anzeigen <span>→</span></button></div>
+            <div class="filter-row"><div class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Patient:in oder Medikament suchen" /></div><button class="filter-button">Alle Status <span>⌄</span></button></div>
+            <div class="table-wrap"><table><thead><tr><th>Patient:in</th><th>Medikament</th><th>Eingang</th><th>Status</th><th></th></tr></thead><tbody id="requests-body">
+              <tr><td><div class="patient"><div class="mini-avatar coral">LM</div><strong>Lisa Müller</strong></div></td><td>Ramipril 5 mg</td><td>vor 8 Min.</td><td><span class="status pending">In Prüfung</span></td><td><button class="row-menu">•••</button></td></tr>
+              <tr><td><div class="patient"><div class="mini-avatar lavender">TH</div><strong>Thomas Hoffmann</strong></div></td><td>Metformin 850 mg</td><td>vor 24 Min.</td><td><span class="status ready">Bereit</span></td><td><button class="row-menu">•••</button></td></tr>
+              <tr><td><div class="patient"><div class="mini-avatar sand">AW</div><strong>Anna Weber</strong></div></td><td>Atorvastatin 20 mg</td><td>vor 46 Min.</td><td><span class="status pending">In Prüfung</span></td><td><button class="row-menu">•••</button></td></tr>
+              <tr><td><div class="patient"><div class="mini-avatar blue-avatar">MK</div><strong>Max König</strong></div></td><td>Bisoprolol 5 mg</td><td>vor 1 Std.</td><td><span class="status done">Abgeschlossen</span></td><td><button class="row-menu">•••</button></td></tr>
+            </tbody></table></div>
+          </section>
+
+          <section class="panel workflow-panel">
+            <div class="panel-heading"><div><h2>Workflow heute</h2><p>Automatisierter Prozess</p></div><span class="live-badge"><i></i> Live</span></div>
+            <div class="workflow-chart"><div class="chart-labels"><span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span></div><div class="chart-area"><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><svg viewBox="0 0 440 145" preserveAspectRatio="none" aria-label="Bearbeitungsverlauf"><path class="chart-fill" d="M0,120 C38,107 54,114 78,88 S118,88 143,94 S182,50 209,72 S245,53 270,58 S300,84 326,55 S363,70 383,34 S417,42 440,18 L440,145 L0,145 Z"/><path class="chart-line" d="M0,120 C38,107 54,114 78,88 S118,88 143,94 S182,50 209,72 S245,53 270,58 S300,84 326,55 S363,70 383,34 S417,42 440,18"/></svg></div></div><div class="chart-legend"><span><i class="legend-dot blue-dot"></i>Anfragen</span><span><i class="legend-dot green-dot"></i>Automatisiert verarbeitet</span></div>
+            <div class="workflow-footer"><div><strong>87%</strong><span>automatisch verarbeitet</span></div><div class="divider"></div><div><strong>3,8 min</strong><span>gesparte Zeit pro Anfrage</span></div></div>
+          </section>
+        </div>
+
+        <section class="bottom-grid">
+          <div class="panel activity-panel"><div class="panel-heading"><div><h2>Letzte Aktivitäten</h2><p>Was gerade passiert</p></div><button class="text-button">Verlauf <span>→</span></button></div><div class="activity-list"><div class="activity"><div class="activity-icon check">✓</div><div><strong>Rezept für Thomas Hoffmann freigegeben</strong><span>vor 3 Min. · Automatisch geprüft</span></div></div><div class="activity"><div class="activity-icon request">＋</div><div><strong>Neue Anfrage von Lisa Müller eingegangen</strong><span>vor 8 Min. · Über Patientenportal</span></div></div><div class="activity"><div class="activity-icon sync">↻</div><div><strong>Integration mit MediCloud synchronisiert</strong><span>vor 18 Min. · Erfolgreich</span></div></div></div></div>
+          <div class="insight-card"><div class="insight-kicker">RXFLOW INSIGHT</div><h2>Ihr Dienstag in Zahlen</h2><p>Sie haben heute bereits <strong>12 Minuten</strong> durch automatisierte Prüfungen eingespart.</p><div class="progress"><span style="width:72%"></span></div><div class="progress-label"><span>Wochenziel</span><strong>72%</strong></div></div>
+        </section>
+      </section>
+
+      <section class="empty-view" id="empty-view" hidden><div class="empty-icon">⌁</div><h2 id="empty-title">Rezeptanfragen</h2><p>Diese Ansicht ist in der Demo vorbereitet.</p><button class="primary-button" id="back-button">Zur Übersicht</button></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="request-modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close">×</button><div class="modal-kicker">NEUE ANFRAGE</div><h2 id="modal-title">Rezeptanfrage anlegen</h2><p>Erstellen Sie eine Anfrage für den automatisierten RxFlow.</p><form id="request-form"><label>Patient:in<input required name="patient" placeholder="Name eingeben" /></label><label>Medikament<input required name="medication" placeholder="z. B. Ramipril 5 mg" /></label><button class="primary-button" type="submit">Anfrage erstellen <span>→</span></button></form></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
